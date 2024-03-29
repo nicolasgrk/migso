@@ -1,16 +1,12 @@
 <?php
 class Database{
     // Propriétés de la base de données
-    //private $host = "localhost";
-    //private $db_name = "migso";
-    //private $username = "root";
-    //private $password = "root";
-    //public $connexion;
     private $host = "localhost";
     private $db_name = "migso";
     private $username = "root";
     private $password = "";
     public $connexion;
+
     // getter pour la connexion
     public function getConnection(){
         // On commence par fermer la connexion si elle existait

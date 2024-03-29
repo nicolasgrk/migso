@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# Ajouter les en-têtes CORS pour toutes les réponses
+Header always set Access-Control-Allow-Origin "*"
+Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS"
+Header always set Access-Control-Allow-Headers "Content-Type"
+
+# Si la méthode est OPTIONS, renvoyer simplement une réponse 200 OK sans redirection
+RewriteCond %{REQUEST_METHOD} OPTIONS
+RewriteRule ^(.*)$ $1 [R=200,L]
