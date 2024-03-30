@@ -8,9 +8,6 @@ include_once '../../models/User.php'; // Assurez-vous que le chemin est correct
 // Vérification de la méthode de la requête
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header("Access-Control-Allow-Origin: *");
-    header("Access-Control-Allow-Methods: POST, OPTIONS");
-    header("Access-Control-Allow-Headers: Content-Type");
-    header("Access-Control-Max-Age: 3600");
     header("Content-Type: application/json; charset=UTF-8");
     
     // Instanciation de la base de données et de l'utilisateur

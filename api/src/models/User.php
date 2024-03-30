@@ -84,4 +84,26 @@ class User {
         }
         return false;
     }
+
+    // Connexion d'un utilisateur
+    public function login() {
+        session_start(); // Démarrer la session
+
+        $sql = "SELECT UserID, Email, Password FROM " . $this->table_name . " WHERE Email = :Email LIMIT 0,1";
+        $query = $this->connexion->prepare($sql);
+        $this->Email = htmlspecialchars(strip_tags($this->Email));
+        $query->bindParam(":Email", $this->Email);
+        $query->execute();
+        $row = $query->fetch(PDO::FETCH_ASSOC);
+        
+        if($row && password_verify($this->Password, $row['Password'])) {
+            $_SESSION['user_id'] = $row['UserID']; // Stocker l'ID utilisateur en session
+
+            // Le mot de passe est correct, vous pouvez configurer les données de session ici
+            $this->UserID = $row['UserID'];
+
+            return true;
+        }
+        return false;
+    }
 }
